@@ -1,0 +1,35 @@
+{
+  "name": "airtable-recipe",
+  "description": "projet esgi",
+  "contributors": [
+    {
+      "name": "mathcovax",
+      "url": "https://github.com/mathcovax"
+    },
+    {
+      "name": "ZeRiix",
+      "url": "https://github.com/ZeRiix"
+    },
+    {
+      "name": "justinDev91",
+      "url": "https://github.com/justinDev91"
+    }
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "docker compose up",
+
+    "test:lint": "./scripts/lint.sh",
+    "test:types": "./scripts/types.sh",
+
+    "build": "./scripts/build.sh",
+
+    "prepare": "husky"
+  },
+  "workspaces": [
+    ".npm-packages",
+    "bff",
+    "front"
+  ],
+  "license": "MIT"
+}

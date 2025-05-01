@@ -1,0 +1,6 @@
+services:
+  bff:
+    extends:
+      file: ${TEMPLATE_COMPOSE_NODE_DEV}
+      service: template-node
+    command: npm -w bff run duplo:dev

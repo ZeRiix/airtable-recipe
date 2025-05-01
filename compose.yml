@@ -1,0 +1,10 @@
+include:
+  # installer node global
+  - path:
+      - ./.docker/node-installer.compose.yml
+  # bff
+  - path:
+      - ${INCLUDE_PATH}/bff/compose.yml
+  # front
+  - path:
+      - ${INCLUDE_PATH}/front/compose.yml
