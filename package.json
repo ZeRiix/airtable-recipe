@@ -1,6 +1,5 @@
 {
   "name": "airtable-recipe",
-  "description": "projet esgi",
   "contributors": [
     {
       "name": "mathcovax",
@@ -17,12 +16,14 @@
   ],
   "type": "module",
   "scripts": {
-    "dev": "docker compose up",
+    "dev": "docker-compose up",
 
     "test:lint": "./scripts/lint.sh",
     "test:types": "./scripts/types.sh",
 
     "build": "./scripts/build.sh",
+
+    "clear": "./scripts/clear.sh",
 
     "prepare": "husky"
   },

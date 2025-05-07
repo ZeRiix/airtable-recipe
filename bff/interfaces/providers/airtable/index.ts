@@ -1,20 +1,10 @@
-import { HttpClient } from "@duplojs/http-client";
-import { envs } from "../../envs";
-import { type AirtableRoutes } from "./types/airtableRoutes";
+import { AirtableClient } from "./client";
+import { IngredientEntity } from "./entities/ingredient";
+import { RecipeEntity } from "./entities/recipe";
 
-export class AirtableProvider {
-	private static httpClient: HttpClient<AirtableRoutes>;
+export const airtableProvider = {
+	db: AirtableClient.db,
+	ingredient: IngredientEntity,
+	recipe: RecipeEntity,
+};
 
-	static {
-		this.httpClient = new HttpClient<AirtableRoutes>({
-			baseUrl: envs.AIRTABLE_BASE_URL,
-		})
-			.setDefaultRequestParams({
-				headers: {
-					get authorization() {
-						return `Bearer ${envs.AIRTABLE_API_KEY}`;
-					},
-				},
-			});
-	}
-}
