@@ -5,7 +5,7 @@ export class IngredientEntity extends AirtableClient {
 	public static async findPerPage(page: number, perPage: number) {
 		const offset = page * perPage;
 
-		return new Promise((resolve) => {
+		return new Promise<Ingredient[]>((resolve) => {
 			AirtableClient.db("Ingredients")
 				.select({
 					maxRecords: perPage,
@@ -38,7 +38,7 @@ export class IngredientEntity extends AirtableClient {
 	}
 
 	public static async create(ingredient: Omit<Ingredient, "id">) {
-		return new Promise((resolve) => {
+		return new Promise<Ingredient>((resolve) => {
 			AirtableClient.db("Ingredients").create(
 				[
 					{
@@ -71,7 +71,7 @@ export class IngredientEntity extends AirtableClient {
 	}
 
 	public static async update(id: string, ingredient: Partial<Omit<Ingredient, "id">>) {
-		return new Promise((resolve) => {
+		return new Promise<Ingredient>((resolve) => {
 			AirtableClient.db("Ingredients").update(
 				[
 					{
@@ -103,7 +103,7 @@ export class IngredientEntity extends AirtableClient {
 	}
 
 	public static async delete(id: string): Promise<boolean> {
-		return new Promise((resolve) => {
+		return new Promise<boolean>((resolve) => {
 			AirtableClient
 				.db("Ingredients")
 				.destroy(
