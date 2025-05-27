@@ -1,1 +1,2 @@
-import "./test";
+import "./auth";
+import "./user";
