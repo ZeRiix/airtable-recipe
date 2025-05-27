@@ -17,7 +17,7 @@
   ],
   "type": "module",
   "scripts": {
-    "dev": "docker compose up",
+    "dev": "./scripts/dev.sh",
 
     "test:lint": "./scripts/lint.sh",
     "test:types": "./scripts/types.sh",

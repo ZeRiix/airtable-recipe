@@ -16,5 +16,6 @@ export const envs = zod
 		FRONT_BASE_URL: zod.string(),
 		AIRTABLE_BASE_URL: zod.string(),
 		AIRTABLE_API_KEY: zod.string(),
+		OLLAMA_BASE_URL: zod.string(),
 	})
 	.parse(process.env);
