@@ -1,4 +1,4 @@
-import { UserModel } from "@interfaces/http/models/user";
+import { User } from "@business/entities/user";
 import { mustBeConnectedRouteBuilder } from "@interfaces/http/security/mustBeConected";
 
 mustBeConnectedRouteBuilder()
@@ -8,5 +8,5 @@ mustBeConnectedRouteBuilder()
 			const user = pickup("user");
 			return new OkHttpResponse("user.found", user);
 		},
-		makeResponseContract(OkHttpResponse, "user.found", UserModel.index),
+		makeResponseContract(OkHttpResponse, "user.found", User.index),
 	);

@@ -1,4 +1,6 @@
-export namespace UserModel {
+import { zod } from "@duplojs/core";
+
+export namespace User {
 	export const index = zod.object({
 		id: zod.string(),
 		username: zod.string(),
