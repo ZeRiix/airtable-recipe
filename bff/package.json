@@ -5,7 +5,7 @@
         "duplo:dev": "tsx --watch interfaces/http/main.ts",
         "duplo:start": "tsx interfaces/http/main.ts",
 
-        "duplo:generate": "DB_CONNECTION=false duplojs-types-codegen --import @duplojs/node/globals --include interfaces/http/routes/index.ts --output ../front/src/libs/client/types/duplojsTypesCodegen.d.ts",
+        "duplo:generate": "DB_CONNECTION=false duplojs-types-codegen --import @duplojs/node/globals --require interfaces/http/plugins/duplo-generate/index.ts --include interfaces/http/routes/index.ts --output ../front/src/libs/client/types/duplojsTypesCodegen.d.ts",
 
         "test:lint": "eslint",
         "test:types": "tsc",
