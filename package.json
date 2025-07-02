@@ -24,6 +24,8 @@
 
     "build": "./scripts/build.sh",
 
+    "clear": "./scripts/clear.sh",
+
     "prepare": "husky"
   },
   "workspaces": [
