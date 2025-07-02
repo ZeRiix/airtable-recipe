@@ -6,13 +6,33 @@
 // noinspection JSUnusedGlobalSymbols
 // @ts-nocheck
 type CodegenRoutes = ({
-    method: "GET";
-    path: "/test";
+    method: "POST";
+    path: "/login";
+    body: {
+        email: string;
+        password: string;
+    };
     response: {
-        code: number;
-        information: string;
-        body: unknown;
-        ok: boolean;
+        code: 404;
+        information: "user.notfound";
+        body?: undefined;
+    } | {
+        code: 200;
+        information: "user.login";
+        body?: undefined;
+    };
+}) | ({
+    method: "POST";
+    path: "/register";
+    body: {
+        username: string;
+        email: string;
+        password: string;
+    };
+    response: {
+        code: 200;
+        information: "user.register";
+        body?: undefined;
     };
 });
 

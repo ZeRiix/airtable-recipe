@@ -17,12 +17,14 @@
   ],
   "type": "module",
   "scripts": {
-    "dev": "docker compose up",
+    "dev": "./scripts/dev.sh",
 
     "test:lint": "./scripts/lint.sh",
     "test:types": "./scripts/types.sh",
 
     "build": "./scripts/build.sh",
+
+    "clear": "./scripts/clear.sh",
 
     "prepare": "husky"
   },

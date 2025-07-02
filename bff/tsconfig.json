@@ -18,6 +18,12 @@
 			"@interfaces/*": [
 				"./interfaces/*"
 			],
+			"@business/*": [
+				"./business/*"
+			],
+			"@utils/*": [
+				"./utils/*"
+			]
 		}
 	},
 	"include": [
