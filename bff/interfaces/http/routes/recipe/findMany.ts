@@ -19,7 +19,7 @@ mustBeConnectedRouteBuilder()
 			const result = await airtableProvider.recipeEntity
 				.findMany(
 					{
-						page,
+						page: page - recipeConfigs.findMany.pageOffset,
 						quantityPerPage: recipeConfigs.findMany.quantityPerPage,
 					},
 				);

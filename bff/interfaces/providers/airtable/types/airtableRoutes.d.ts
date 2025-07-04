@@ -60,7 +60,7 @@ type AirtableRoutes = ({
         	}
 }) | ({
 	method: "POST";
-	path: "/Ingredient";
+	path: "/Ingredients";
 	body: {
 		records: {
 			fields: {
@@ -73,8 +73,8 @@ type AirtableRoutes = ({
 				Vitamins: string;
 				Minerals: string;
 				"Ingredient Photo": string | undefined;
-			}
-		}
+			};
+		}[];
 	};
 	response:
 			| {
@@ -154,14 +154,14 @@ type AirtableRoutes = ({
         	}
 }) | ({
 	method: "POST";
-	path: "/Recipe";
+	path: "/Recipes";
 	body: {
 		records: {
 			fields: Omit<
 				Recipe.Index, 
-				"id" | "createdAt" | "Total Nutritional Content" | "Total Ingredient Calories" | "Total Ingredient Proteins" | "Total Ingredient Carbohydrates" | "Total Ingredient Fats" | "Ingredient List"
+				"id" | "createdAt" | "Total Nutritional Content" | "Total Ingredient Calories" | "Total Ingredient Proteins" | "Total Ingredient Carbohydrates" | "Total Ingredient Fats" | "Ingredient List" | "Recipe Summary" | "Nutritional Analysis Summary"
 				>;
-		};
+		}[];
 	};
 	response:
 			| {

@@ -16,8 +16,8 @@ export type InputFindOneIngredient = FindHttpClientRoute<
 export type InputCreateIngredient = FindHttpClientRoute<
 	AirtableRoutes,
 	"POST",
-	"/Ingredient"
->["body"]["records"]["fields"];
+	"/Ingredients"
+>["body"]["records"][number]["fields"];
 
 export type InputDeleteIngredient = FindHttpClientRoute<
 	AirtableRoutes,

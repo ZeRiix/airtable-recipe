@@ -58,12 +58,14 @@ export class IngredientEntity extends AirtableBaseClient {
 
 	public static create(input: InputCreateIngredient) {
 		return this.httpClient.post(
-			"/Ingredient",
+			"/Ingredients",
 			{
 				body: {
-					records: {
-						fields: input,
-					},
+					records: [
+						{
+							fields: input,
+						},
+					],
 				},
 			},
 		)

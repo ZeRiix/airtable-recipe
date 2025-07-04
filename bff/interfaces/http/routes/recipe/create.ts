@@ -17,7 +17,7 @@ mustBeConnectedRouteBuilder()
 			dishType: zod.enum(Recipe.dishTypeEnum.toTuple()),
 			foodIntolerances: zod.enum(Recipe.intoleranceEnum.toTuple()).array(),
 			recipePhoto: zod.string().url().optional(),
-			ingredientIds: zod.array(zod.string()),
+			ingredientIds: zod.string().array(),
 		}),
 	})
 	.cut(
@@ -88,18 +88,6 @@ mustBeConnectedRouteBuilder()
 					"Food Intolerances": foodIntolerances,
 					"Recipe Photo": recipePhoto,
 					Ingredients: ingredientList.map((ingredient) => ingredient.id),
-					"Recipe Summary": {
-						state: "error",
-						errorType: "enterpriseRestricted",
-						value: "",
-						isStale: false,
-					},
-					"Nutritional Analysis Summary": {
-						state: "error",
-						errorType: "enterpriseRestricted",
-						value: "",
-						isStale: false,
-					},
 				});
 
 			return new CreatedHttpResponse("recipe.created");
