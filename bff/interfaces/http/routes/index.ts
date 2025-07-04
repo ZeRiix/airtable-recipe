@@ -1,1 +1,3 @@
-import "./auth/index";
+import "./auth";
+import "./ingredient";
+import "./recipe";

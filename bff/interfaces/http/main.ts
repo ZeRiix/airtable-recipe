@@ -1,3 +1,4 @@
+import "@libs/logger";
 import "@duplojs/node";
 import "@duplojs/node/globals";
 import { Duplo, useProcessBuilder, useRouteBuilder } from "@duplojs/core";
@@ -13,6 +14,7 @@ const duplo = new Duplo({
 	environment: envs.ENVIROMENT,
 	host: envs.HOST,
 	port: envs.PORT,
+	disabledZodAccelerator: envs.ENVIROMENT === "DEV",
 	plugins: [
 		duploCors(envs.FRONT_BASE_URL),
 		duploCookie(),

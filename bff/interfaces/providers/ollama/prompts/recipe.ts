@@ -41,6 +41,6 @@ Voici le format attendu :
 
 Génère une recette de **${name}** pour **${numberOfPeople} personnes**, équilibrée en protéines.
 
-Assure-toi que tous les champs sont remplis, que les types correspondent à ceux attendus, et que les photos sont valides (exemples d'URL factices mais bien formatées).
+Assure-toi que tous les champs sont remplis, que les types correspondent à ceux attendus.
 `;
 }

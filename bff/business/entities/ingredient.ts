@@ -1,9 +1,9 @@
 import { zod } from "@duplojs/core";
-import { photoSchema } from "./photo";
 
 export namespace Ingredient {
 	export const index = zod.object({
 		id: zod.string(),
+		createdAT: zod.string(),
 		"Ingredient Name": zod.string(),
 		"Nutritional Content": zod.string(),
 		Calories: zod.number(),
@@ -12,7 +12,7 @@ export namespace Ingredient {
 		Fats: zod.number(),
 		Vitamins: zod.string(),
 		Minerals: zod.string(),
-		"Ingredient Photo": photoSchema.array().optional(),
+		"Ingredient Photo": zod.string().url().optional(),
 		"Related Recipes": zod.string().array(),
 		"Total Calories in Recipes": zod.number(),
 		"Total Proteins in Recipes": zod.number(),
@@ -25,6 +25,12 @@ export namespace Ingredient {
 		"Average Fats per Recipe": zod.number(),
 	});
 
-	export type Ingredient = Zod.infer<typeof index>;
-}
+	export type Index = Zod.infer<typeof index>;
 
+	export const list = index.array();
+
+	export const listPage = zod.object({
+		quantityPerPage: zod.number(),
+		total: zod.number(),
+	});
+}
