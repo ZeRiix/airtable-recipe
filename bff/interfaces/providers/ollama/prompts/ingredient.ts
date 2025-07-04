@@ -7,14 +7,14 @@ Ne fournis **aucun texte ou commentaire** autour du résultat. Génère uniqueme
 Voici le format attendu ('ingredientSchema') :
 
 {
-  "Ingredient Name": "string (nom de l’ingrédient)",
-  "Nutritional Content": "string (brève description de la valeur nutritionnelle)",
-  "Calories": number,
-  "Proteins": number,
-  "Carbohydrates": number,
-  "Fats": number (0 - 1),
-  "Vitamins": "string (e.g. A, B, C, D, E)",
-  "Minerals": "string (e.g. Calcium, Fer, Zinc)",
+  "ingredientName": "string (nom de l’ingrédient)",
+  "nutritionalContent": "string (brève description de la valeur nutritionnelle)",
+  "calories": number,
+  "proteins": number,
+  "carbohydrates": number,
+  "fats": number,
+  "vitamins": ["A", "B1", "B2", "B3", "B5", "B6", "B7", "C", "D", "E", "K"],
+  "minerals": ["Calcium", "Chloride", "Copper", "Iron", "Magnesium", "Manganese", "Phosphorus", "Potassium", "Selenium", "Sodium", "Zinc"],
 }
 
 Instruction : Génère cet objet pour l’ingrédient **"${name}"**.

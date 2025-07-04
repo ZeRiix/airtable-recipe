@@ -13,6 +13,7 @@ export const envs = zod
 		PORT: zod.coerce.number(),
 		HOST: zod.enum(["0.0.0.0"]),
 		ENVIROMENT: zod.enum(["DEV", "PROD"]),
+		CORS_ALLOW_ORIGIN: zod.string(),
 		FRONT_BASE_URL: zod.string(),
 		AIRTABLE_BASE_URL: zod.string(),
 		AIRTABLE_API_KEY: zod.string(),

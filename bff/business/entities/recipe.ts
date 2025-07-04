@@ -39,18 +39,6 @@ export namespace Recipe {
 		"Total Ingredient Carbohydrates": zod.number(),
 		"Total Ingredient Fats": zod.number(),
 		"Ingredient List": zod.string().array(),
-		"Recipe Summary": zod.object({
-			state: zod.string(),
-			errorType: zod.string(),
-			value: zod.string(),
-			isStale: zod.boolean(),
-		}),
-		"Nutritional Analysis Summary": zod.object({
-			state: zod.string(),
-			errorType: zod.string(),
-			value: zod.string(),
-			isStale: zod.boolean(),
-		}),
 	});
 
 	export type Index = Zod.infer<typeof index>;

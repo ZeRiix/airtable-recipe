@@ -16,7 +16,7 @@ const duplo = new Duplo({
 	port: envs.PORT,
 	disabledZodAccelerator: envs.ENVIROMENT === "DEV",
 	plugins: [
-		duploCors(envs.FRONT_BASE_URL),
+		duploCors(envs.CORS_ALLOW_ORIGIN),
 		duploCookie(),
 		duploDebug(),
 	],

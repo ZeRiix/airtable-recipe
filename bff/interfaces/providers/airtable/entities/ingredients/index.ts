@@ -72,6 +72,22 @@ export class IngredientEntity extends AirtableBaseClient {
 			.iWantCode("200");
 	}
 
+	public static createMany(inputs: InputCreateIngredient[]) {
+		return this.httpClient.post(
+			"/Ingredients",
+			{
+				body: {
+					records: inputs.map(
+						(input) => ({
+							fields: input,
+						}),
+					),
+				},
+			},
+		)
+			.iWantCode("200");
+	}
+
 	public static async count(pageSize: number) {
 		let count = 0;
 		let offset: string | undefined = undefined;

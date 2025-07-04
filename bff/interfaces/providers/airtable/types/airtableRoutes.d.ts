@@ -80,7 +80,9 @@ type AirtableRoutes = ({
 			| {
 				code: 200;
 				information: undefined;
-				body: AirtableBaseOutput<Ingredient.Index>[];
+				body: {
+					records: AirtableBaseOutput<Ingredient.Index>[];
+				};
 				ok: true;
 			}
 }) | ({
@@ -167,7 +169,9 @@ type AirtableRoutes = ({
 			| {
 				code: 200;
 				information: undefined;
-				body: AirtableBaseOutput<Recipe.Index>[];
+				body: {
+					records: AirtableBaseOutput<Recipe.Index>[];
+				};
 				ok: true;
 			}
 }) | ({

@@ -69,18 +69,6 @@ type Recipe = {
     "Total Ingredient Carbohydrates": number;
     "Total Ingredient Fats": number;
     "Ingredient List": string[];
-    "Recipe Summary": {
-        state: string;
-        errorType: string;
-        value: string;
-        isStale: boolean;
-    };
-    "Nutritional Analysis Summary": {
-        state: string;
-        errorType: string;
-        value: string;
-        isStale: boolean;
-    };
 };
 
 export { Recipe };
@@ -163,7 +151,7 @@ type CodegenRoutes = ({
         fats: number;
         vitaminList: Vitamin[];
         mineralList: Mineral[];
-        photoLink?: string | undefined;
+        photoLink: string;
     };
     response: {
         code: 201;
@@ -189,7 +177,7 @@ type CodegenRoutes = ({
     method: "POST";
     path: "/recipe-create";
     body: {
-        recipeName: string;
+        name: string;
         description: string;
         servings: number;
         calories: number;
@@ -198,7 +186,7 @@ type CodegenRoutes = ({
         fats: number;
         dishType: "Main Course" | "Dessert" | "Appetizer" | "Snack";
         foodIntolerances: ("Soy" | "Gluten" | "Lactose" | "Nuts" | "Seafood")[];
-        recipePhoto?: string | undefined;
+        recipePhoto: string;
         ingredientIds: string[];
     };
     response: {
@@ -261,6 +249,19 @@ type CodegenRoutes = ({
             quantityPerPage: number;
             total: number;
         };
+    };
+}) | ({
+    method: "POST";
+    path: "/recipe-create-with-ai";
+    body: {
+        name: string;
+        numberOfPeople: number;
+        recipePhoto: string;
+    };
+    response: {
+        code: 201;
+        information: "recipe.createdWithAI";
+        body: Recipe;
     };
 });
 

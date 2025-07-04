@@ -1,21 +1,40 @@
 import { mineralEnumSchema } from "@business/entities/common/mineral";
 import { vitaminEnumSchema } from "@business/entities/common/vitamin";
+import { ingredientConfigs } from "@interfaces/configs/ingredients";
 import { mustBeConnectedRouteBuilder } from "@interfaces/http/security/mustBeConected";
 import { airtableProvider } from "@interfaces/providers/airtable";
+
+const {
+	name, calories, proteins, carbohydrates, fats, minerals, nutritionalContent, vitamins,
+} = ingredientConfigs.create;
 
 mustBeConnectedRouteBuilder()
 	.createRoute("POST", "/ingredient-create")
 	.extract({
 		body: zod.object({
-			name: zod.string(),
-			nutritionalContent: zod.string(),
-			calories: zod.number(),
-			proteins: zod.number(),
-			carbohydrates: zod.number(),
-			fats: zod.number(),
-			vitaminList: vitaminEnumSchema.array(),
-			mineralList: mineralEnumSchema.array(),
-			photoLink: zod.string().url().optional(),
+			name: zod.string()
+				.min(name.min)
+				.max(name.max),
+			nutritionalContent: zod.string()
+				.min(nutritionalContent.min)
+				.max(nutritionalContent.max),
+			calories: zod.number()
+				.min(calories.min)
+				.max(calories.max),
+			proteins: zod.number()
+				.min(proteins.min)
+				.max(proteins.max),
+			carbohydrates: zod.number()
+				.min(carbohydrates.min)
+				.max(carbohydrates.max),
+			fats: zod.number()
+				.min(fats.min)
+				.max(fats.max),
+			vitaminList: vitaminEnumSchema.array()
+				.max(vitamins.max),
+			mineralList: mineralEnumSchema.array()
+				.max(minerals.max),
+			photoLink: zod.string().url(),
 		}),
 	})
 	.handler(
