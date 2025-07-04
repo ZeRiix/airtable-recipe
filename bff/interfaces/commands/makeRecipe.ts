@@ -4,38 +4,21 @@ import "../envs";
 import { OllamaProvider } from "@interfaces/providers/ollama";
 import { recipePrompt } from "@interfaces/providers/ollama/prompts/recipe";
 import { ingredientPrompt } from "@interfaces/providers/ollama/prompts/ingredient";
+import { Recipe } from "@business/entities/recipe";
 
 export const inputRecipeSchema = zod.object({
-	"Recipe Name": zod.string(),
-	Description: zod.string(),
-	Servings: zod.number(),
-	Calories: zod.number(),
-	Proteins: zod.number(),
-	Carbohydrates: zod.number(),
-	Fats: zod.number(),
-	Vitamins: zod.string(),
-	Minerals: zod.string(),
-	"Dish Type": zod.string(),
-	"Food Intolerances": zod.array(zod.string()),
-	Ingredients: zod.array(zod.string()),
-	"Total Nutritional Content": zod.string(),
-	"Total Ingredient Calories": zod.number(),
-	"Total Ingredient Proteins": zod.number(),
-	"Total Ingredient Carbohydrates": zod.number(),
-	"Total Ingredient Fats": zod.number(),
-	"Ingredient List": zod.array(zod.string()),
-	"Recipe Summary": zod.object({
-		state: zod.string(),
-		errorType: zod.string().nullish().default(""),
-		value: zod.string(),
-		isStale: zod.boolean(),
-	}),
-	"Nutritional Analysis Summary": zod.object({
-		state: zod.string(),
-		errorType: zod.string().nullish().default(""),
-		value: zod.string(),
-		isStale: zod.boolean(),
-	}),
+	recipeName: zod.string(),
+	description: zod.string(),
+	servings: zod.number(),
+	calories: zod.number(),
+	proteins: zod.number(),
+	carbohydrates: zod.number(),
+	fats: zod.number(),
+	vitamins: zod.string(),
+	minerals: zod.string(),
+	dishType: zod.enum(Recipe.dishTypeEnum.toTuple()),
+	foodIntolerances: zod.enum(Recipe.intoleranceEnum.toTuple()).array(),
+	ingredientList: zod.array(zod.string()),
 });
 
 const inputSchema = zod.object({
@@ -68,9 +51,9 @@ console.log(rawRecipe);
 
 const recipe = inputRecipeSchema.parse(rawRecipe);
 
-const { "Ingredient List": recipeIngredients } = recipe;
+const { ingredientList: recipeIngredients } = recipe;
 
-const rawIngredients = await Promise.all(
+const rawIngredientList = await Promise.all(
 	recipeIngredients.map(
 		(ingredient) => OllamaProvider
 			.sendMessage(
@@ -88,4 +71,4 @@ const rawIngredients = await Promise.all(
 	),
 );
 
-console.log(rawIngredients);
+console.log(rawIngredientList);

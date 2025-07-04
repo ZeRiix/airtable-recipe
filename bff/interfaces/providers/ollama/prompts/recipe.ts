@@ -7,40 +7,22 @@ Respecte strictement cette structure **TypeScript JSON-like**, sans ajout de tex
 Voici le format attendu :
 
 {
-  "Recipe Name": "string",
-  "Description": "string",
-  "Servings": number,
-  "Calories": number,
-  "Proteins": number,
-  "Carbohydrates": number,
-  "Fats": number,
-  "Vitamins": "string (e.g. A, B6, C, D, E)",
-  "Minerals": "string (e.g. Iron, Calcium, Magnesium)",
-  "Dish Type": "string (e.g. Dessert, Main, Appetizer)",
-  "Food Intolerances": ["string", ...],
-  "Ingredients": ["ingredient ids", ...],
-  "Total Nutritional Content": "string (summary sentence)",
-  "Total Ingredient Calories": number,
-  "Total Ingredient Proteins": number,
-  "Total Ingredient Carbohydrates": number,
-  "Total Ingredient Fats": number,
-  "Ingredient List": ["string names of ingredients", ...],
-  "Recipe Summary": {
-    "state": "string",
-    "errorType": "string",
-    "value": "string (short summary)",
-    "isStale": boolean
-  },
-  "Nutritional Analysis Summary": {
-    "state": "string",
-    "errorType": "string",
-    "value": "string (nutritional comment)",
-    "isStale": boolean
-  }
+  "recipeName": "string",
+  "description": "string",
+  "servings": number,
+  "calories": number,
+  "proteins": number,
+  "carbohydrates": number,
+  "fats": number,
+  "vitamins": "string (e.g. A, B6, C, D, E)",
+  "minerals": "string (e.g. Iron, Calcium, Magnesium)",
+  "dishType": "string (e.g. "Main Course", "Dessert", "Appetizer", "Snack")",
+  "foodIntolerances": ["Soy", "Gluten", "Lactose", "Nuts", "Seafood"],
+  "ingredientList": ["string names of ingredients", ...],
 }
 
 Génère une recette de **${name}** pour **${numberOfPeople} personnes**, équilibrée en protéines.
 
-Assure-toi que tous les champs sont remplis, que les types correspondent à ceux attendus, et que les photos sont valides (exemples d'URL factices mais bien formatées).
+Assure-toi que tous les champs sont remplis, que les types correspondent à ceux attendus.
 `;
 }

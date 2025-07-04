@@ -5,6 +5,74 @@
 /* v8 ignore start */
 // noinspection JSUnusedGlobalSymbols
 // @ts-nocheck
+type Ingredient = {
+    id: string;
+    createdAT: string;
+    "Ingredient Name": string;
+    "Nutritional Content": string;
+    Calories: number;
+    Proteins: number;
+    Carbohydrates: number;
+    Fats: number;
+    Vitamins: string;
+    Minerals: string;
+    "Ingredient Photo"?: string | undefined;
+    "Related Recipes": string[];
+    "Total Calories in Recipes": number;
+    "Total Proteins in Recipes": number;
+    "Total Carbohydrates in Recipes": number;
+    "Total Fats in Recipes": number;
+    "Number of Recipes Using Ingredient": number;
+    "Average Calories per Recipe": number;
+    "Average Proteins per Recipe": number;
+    "Average Carbohydrates per Recipe": number;
+    "Average Fats per Recipe": number;
+};
+
+export { Ingredient };
+
+type Vitamin = "A" | "B1" | "B2" | "B3" | "B5" | "B6" | "B7" | "C" | "D" | "E" | "K";
+
+export { Vitamin };
+
+type Mineral = "Calcium" | "Chloride" | "Copper" | "Iron" | "Magnesium" | "Manganese" | "Phosphorus" | "Potassium" | "Selenium" | "Sodium" | "Zinc";
+
+export { Mineral };
+
+type DishType = "Main Course" | "Dessert" | "Appetizer" | "Snack";
+
+export { DishType };
+
+type Intolerance = "Soy" | "Gluten" | "Lactose" | "Nuts" | "Seafood";
+
+export { Intolerance };
+
+type Recipe = {
+    id: string;
+    createdAt: string;
+    "Recipe Name": string;
+    Description: string;
+    Servings: number;
+    Calories: number;
+    Proteins: number;
+    Carbohydrates: number;
+    Fats: number;
+    Vitamins: string;
+    Minerals: string;
+    "Dish Type": DishType;
+    "Food Intolerances": Intolerance[];
+    Ingredients: string[];
+    "Recipe Photo"?: string | undefined;
+    "Total Nutritional Content": string;
+    "Total Ingredient Calories": number;
+    "Total Ingredient Proteins": number;
+    "Total Ingredient Carbohydrates": number;
+    "Total Ingredient Fats": number;
+    "Ingredient List": string[];
+};
+
+export { Recipe };
+
 type CodegenRoutes = ({
     method: "POST";
     path: "/login";
@@ -33,6 +101,167 @@ type CodegenRoutes = ({
         code: 200;
         information: "user.register";
         body?: undefined;
+    };
+}) | ({
+    method: "POST";
+    path: "/ingredient-find-many";
+    body: {
+        page: number;
+    };
+    response: {
+        code: 200;
+        information: "ingredientList.found";
+        body: Ingredient[];
+    };
+}) | ({
+    method: "POST";
+    path: "/ingredient-find-one";
+    body: {
+        ingredientId: string;
+    };
+    response: {
+        code: 404;
+        information: "ingredient.notfound";
+        body?: undefined;
+    } | {
+        code: 200;
+        information: "ingredient.found";
+        body: Ingredient;
+    };
+}) | ({
+    method: "POST";
+    path: "/ingredient-list-page";
+    response: {
+        code: 200;
+        information: "ingredientList.pageInformation";
+        body: {
+            quantityPerPage: number;
+            total: number;
+        };
+    };
+}) | ({
+    method: "POST";
+    path: "/ingredient-create";
+    body: {
+        name: string;
+        nutritionalContent: string;
+        calories: number;
+        proteins: number;
+        carbohydrates: number;
+        fats: number;
+        vitaminList: Vitamin[];
+        mineralList: Mineral[];
+        photoLink: string;
+    };
+    response: {
+        code: 201;
+        information: "ingredient.created";
+        body?: undefined;
+    };
+}) | ({
+    method: "POST";
+    path: "/ingredient-delete";
+    body: {
+        ingredientId: string;
+    };
+    response: {
+        code: 404;
+        information: "ingredient.notfound";
+        body?: undefined;
+    } | {
+        code: 200;
+        information: "ingredient.deleted";
+        body?: undefined;
+    };
+}) | ({
+    method: "POST";
+    path: "/recipe-create";
+    body: {
+        name: string;
+        description: string;
+        servings: number;
+        calories: number;
+        proteins: number;
+        carbohydrates: number;
+        fats: number;
+        dishType: "Main Course" | "Dessert" | "Appetizer" | "Snack";
+        foodIntolerances: ("Soy" | "Gluten" | "Lactose" | "Nuts" | "Seafood")[];
+        recipePhoto: string;
+        ingredientIds: string[];
+    };
+    response: {
+        code: 404;
+        information: "ingredient.notfound";
+        body?: undefined;
+    } | {
+        code: 201;
+        information: "recipe.created";
+        body?: undefined;
+    };
+}) | ({
+    method: "POST";
+    path: "/recipe-delete";
+    body: {
+        recipeId: string;
+    };
+    response: {
+        code: 404;
+        information: "recipe.notfound";
+        body?: undefined;
+    } | {
+        code: 200;
+        information: "recipe.deleted";
+        body?: undefined;
+    };
+}) | ({
+    method: "POST";
+    path: "/recipe-find-many";
+    body: {
+        page: number;
+    };
+    response: {
+        code: 200;
+        information: "recipeList.found";
+        body: Recipe[];
+    };
+}) | ({
+    method: "POST";
+    path: "/recipe-find-one";
+    body: {
+        recipeId: string;
+    };
+    response: {
+        code: 404;
+        information: "recipe.notfound";
+        body?: undefined;
+    } | {
+        code: 200;
+        information: "recipe.found";
+        body: Recipe;
+    };
+}) | ({
+    method: "POST";
+    path: "/recipe-list-page";
+    response: {
+        code: 200;
+        information: "recipeList.pageInformation";
+        body: {
+            quantityPerPage: number;
+            total: number;
+        };
+    };
+}) | ({
+    method: "POST";
+    path: "/recipe-create-with-ai";
+    body: {
+        name: string;
+        numberOfPeople: number;
+        recipePhoto: string;
+    };
+    response: {
+        code: 201;
+        information: "recipe.createdWithAI";
+        body: Recipe;
     };
 });
 
