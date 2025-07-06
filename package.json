@@ -30,8 +30,8 @@
   },
   "workspaces": [
     ".npm-packages",
-    "bff",
-    "front"
+    "libs/**",
+    "services/**"
   ],
   "license": "MIT"
 }

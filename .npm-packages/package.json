@@ -4,6 +4,7 @@
     "typescript": "5.7.2",
     "ts-pattern": "5.7.0",
     "@commitlint/cli": "19.7.1",
+    "@duplojs/http-client": "1.2.3",
     "@duplojs/utils": "0.3.1",
     "@duplojs/eslint": "0.4.0",
     "concurrently": "9.1.2",

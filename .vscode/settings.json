@@ -23,8 +23,14 @@
     "html.format.enable": false,
     "json.format.enable": false,
     "eslint.workingDirectories": [
-      "bff",
-      "front"
+      "services/bff",
+      "services/front",
+	  "libs/backend-logger",
+	  "libs/clients-types",
+	  "libs/design-system",
+	  "libs/duplo-plugins",
+	  "libs/entity-rules",
+	  "libs/eslint"
     ],
     "typescript.tsdk": "node_modules/typescript/lib"
 }
