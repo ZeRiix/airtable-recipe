@@ -1,13 +1,18 @@
 import { envs } from "@interfaces/envs";
 import { iWantUserExistByEmail } from "@interfaces/http/checkers/user";
 import { TokenProvider } from "@interfaces/providers/token";
+import { userRules } from "@vendors/entity-rules";
+
+const { password } = userRules;
 
 useBuilder()
 	.createRoute("POST", "/login")
 	.extract({
 		body: zod.object({
 			email: zod.string().email(),
-			password: zod.string(),
+			password: zod.string()
+				.min(password.min)
+				.max(password.max),
 		}),
 	})
 	.presetCheck(
@@ -38,18 +43,18 @@ useBuilder()
 				email,
 			});
 
-			return new OkHttpResponse("user.login")
+			return new OkHttpResponse("user.login", { token })
 				.setCookie(
 					"token",
 					token,
 					{
 						httpOnly: false,
-						secure: true,
-						sameSite: "none",
+						secure: false,
+						sameSite: "lax",
 						path: "/",
-						domain: envs.FRONT_BASE_URL,
+						domain: envs.FRONT_DOMAIN,
 					},
 				);
 		},
-		makeResponseContract(OkHttpResponse, "user.login"),
+		makeResponseContract(OkHttpResponse, "user.login", zod.object({ token: zod.string() })),
 	);

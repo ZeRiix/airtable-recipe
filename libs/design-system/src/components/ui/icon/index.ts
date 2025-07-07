@@ -12,6 +12,8 @@ import {
 	mdiDownload,
 	mdiWeb,
 	mdiViewList,
+	mdiFoodDrumstick,
+	mdiImageAlbum,
 } from "@mdi/js";
 
 export const iconsMapper = {
@@ -28,6 +30,8 @@ export const iconsMapper = {
 	download: mdiDownload,
 	web: mdiWeb,
 	viewList: mdiViewList,
+	foodDrumstick: mdiFoodDrumstick,
+	imageAlbum: mdiImageAlbum,
 };
 
 export const iconSizeMapper = {

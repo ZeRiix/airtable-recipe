@@ -13,8 +13,8 @@ Voici le format attendu ('ingredientSchema') :
   "proteins": number,
   "carbohydrates": number,
   "fats": number,
-  "vitamins": ["A", "B1", "B2", "B3", "B5", "B6", "B7", "C", "D", "E", "K"],
-  "minerals": ["Calcium", "Chloride", "Copper", "Iron", "Magnesium", "Manganese", "Phosphorus", "Potassium", "Selenium", "Sodium", "Zinc"],
+  "vitamins": ["A", "B1", "B2", "B3", "B5", "B6", "B7", "C", "D", "E", "K"] (uniquement les choix proposés),
+  "minerals": ["Calcium", "Chloride", "Copper", "Iron", "Magnesium", "Manganese", "Phosphorus", "Potassium", "Selenium", "Sodium", "Zinc"] (uniquement les choix proposés),
 }
 
 Instruction : Génère cet objet pour l’ingrédient **"${name}"**.

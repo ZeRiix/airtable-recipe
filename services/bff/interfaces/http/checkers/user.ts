@@ -53,6 +53,7 @@ export const iWantUserExistById = createPresetChecker(
 			value: input,
 		}),
 	},
+	makeResponseContract(NotFoundHttpResponse, "user.notfound"),
 );
 
 export const iWantNoUserWithEmail = createPresetChecker(
@@ -62,6 +63,7 @@ export const iWantNoUserWithEmail = createPresetChecker(
 		catch: () => new ConflictHttpResponse("user.exist"),
 		transformInput: inputUserExist.email,
 	},
+	makeResponseContract(ConflictHttpResponse, "user.exist"),
 );
 
 export const iWantUserExistByEmail = createPresetChecker(
@@ -72,4 +74,5 @@ export const iWantUserExistByEmail = createPresetChecker(
 		indexing: "user",
 		transformInput: inputUserExist.email,
 	},
+	makeResponseContract(NotFoundHttpResponse, "user.notfound"),
 );

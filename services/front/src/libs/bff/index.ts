@@ -2,14 +2,14 @@ import { envs } from "@/libs/envs";
 import { HttpClient, type TransformCodegenRouteToHttpClientRoute } from "@duplojs/http-client";
 import type { CodegenRoutes } from "@vendors/clients-type/bff/duplojsTypesCodegen";
 
-export type HttpClientRoute = TransformCodegenRouteToHttpClientRoute<
+export type BffClientRoute = TransformCodegenRouteToHttpClientRoute<
 	CodegenRoutes
 >;
 
 const { sonnerError, sonnerMessage, sonnerWarning } = useSonner();
 const { enableLoader, disableLoader } = useLoader();
 
-const defaultRequestTimeout = 10000;
+const defaultRequestTimeout = 100000;
 
 declare module "@duplojs/http-client" {
 	interface HttpClientRequestInit {
@@ -22,15 +22,16 @@ declare module "@duplojs/http-client" {
 
 declare global {
 	interface Window {
-		bffClient: HttpClient<HttpClientRoute>;
+		bffClient: HttpClient<BffClientRoute>;
 	}
 }
 
-export const bffClient = new HttpClient<HttpClientRoute>({
+export const bffClient = new HttpClient<BffClientRoute>({
 	baseUrl: envs.VITE_BFF_ENTRYPOINT_BASE_URL,
 })
 	.setDefaultRequestParams({
 		mode: "cors",
+		credentials: "include",
 	})
 	.setInterceptor(
 		"request",

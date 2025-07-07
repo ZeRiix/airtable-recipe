@@ -1,8 +1,7 @@
 import { Ingredient } from "@business/entities/ingredient";
 import { iWantIngredientExistById } from "@interfaces/http/checkers/ingredient";
-import { mustBeConnectedRouteBuilder } from "@interfaces/http/security/mustBeConected";
 
-mustBeConnectedRouteBuilder()
+useBuilder()
 	.createRoute("POST", "/ingredient-find-one")
 	.extract({
 		body: {

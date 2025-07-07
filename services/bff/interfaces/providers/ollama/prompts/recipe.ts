@@ -14,10 +14,10 @@ Voici le format attendu :
   "proteins": number,
   "carbohydrates": number,
   "fats": number,
-  "vitamins": "string (e.g. A, B6, C, D, E)",
-  "minerals": "string (e.g. Iron, Calcium, Magnesium)",
-  "dishType": "string (e.g. "Main Course", "Dessert", "Appetizer", "Snack")",
-  "foodIntolerances": ["Soy", "Gluten", "Lactose", "Nuts", "Seafood"],
+  "vitamins": "string (e.g. A, B6, C, D, E)" (uniquement les choix proposés),
+  "minerals": "string (e.g. Iron, Calcium, Magnesium)" (uniquement les choix proposés),
+  "dishType": "string (e.g. "Main Course", "Dessert", "Appetizer", "Snack")" (uniquement les choix proposés),
+  "foodIntolerances": ["Soy", "Gluten", "Lactose", "Nuts", "Seafood"] (uniquement les choix proposés),
   "ingredientList": ["string names of ingredients", ...],
 }
 

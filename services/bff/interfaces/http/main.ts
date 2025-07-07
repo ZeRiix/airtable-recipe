@@ -27,6 +27,13 @@ duplo.register(
 	...useRouteBuilder.getAllCreatedRoute(),
 );
 
+duplo.hook(
+	"beforeSend",
+	(request, response) => {
+		console.log(request.path, request.method, response);
+	},
+);
+
 await duplo.launch(
 	// eslint-disable-next-line no-console
 	() => void console.log("BFF service is running !"),

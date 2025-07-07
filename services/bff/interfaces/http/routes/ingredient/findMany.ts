@@ -1,11 +1,10 @@
 import { Ingredient } from "@business/entities/ingredient";
 import { ingredientConfigs } from "@interfaces/configs/ingredients";
-import { mustBeConnectedRouteBuilder } from "@interfaces/http/security/mustBeConected";
 import { airtableProvider } from "@interfaces/providers/airtable";
 
 const { pageOffset, quantityPerPage } = ingredientConfigs.findMany;
 
-mustBeConnectedRouteBuilder()
+useBuilder()
 	.createRoute("POST", "/ingredient-find-many")
 	.extract({
 		body: zod.object({

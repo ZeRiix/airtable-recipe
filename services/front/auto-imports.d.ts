@@ -56,6 +56,7 @@ declare global {
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
   const onWatcherCleanup: typeof import('vue')['onWatcherCleanup']
+  const passwordLayoutTemplate: typeof import('./vendors/design-system/utils/layoutTemplate')['passwordLayoutTemplate']
   const provide: typeof import('vue')['provide']
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
@@ -118,7 +119,7 @@ declare global {
   export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
   // @ts-ignore
-  export type { HttpClientRoute } from './src/libs/bff/index'
+  export type { BffClientRoute } from './src/libs/bff/index'
   import('./src/libs/bff/index')
   // @ts-ignore
   export type { FormFieldOptions } from './vendors/design-system/composables/useFormBuilder/createFormField'
@@ -228,6 +229,7 @@ declare module 'vue' {
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
     readonly onWatcherCleanup: UnwrapRef<typeof import('vue')['onWatcherCleanup']>
+    readonly passwordLayoutTemplate: UnwrapRef<typeof import('./vendors/design-system/utils/layoutTemplate')['passwordLayoutTemplate']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly reactive: UnwrapRef<typeof import('vue')['reactive']>
     readonly readonly: UnwrapRef<typeof import('vue')['readonly']>
