@@ -136,6 +136,7 @@ declare module 'vue' {
     InlineFormTemplate: typeof import('./vendors/design-system/components/form/InlineFormTemplate.vue')['default']
     MultiComboboxTemplate: typeof import('./vendors/design-system/components/form/MultiComboboxTemplate.vue')['default']
     MultiLayoutTemplate: typeof import('./vendors/design-system/components/form/MultiLayoutTemplate.vue')['default']
+    PasswordLayoutTemplate: typeof import('./vendors/design-system/components/form/PasswordLayoutTemplate.vue')['default']
     RadioGroup: typeof import('./vendors/design-system/components/ui/radio-group/RadioGroup.vue')['default']
     RadioGroupItem: typeof import('./vendors/design-system/components/ui/radio-group/RadioGroupItem.vue')['default']
     RepeatLayoutTemplate: typeof import('./vendors/design-system/components/form/RepeatLayoutTemplate.vue')['default']

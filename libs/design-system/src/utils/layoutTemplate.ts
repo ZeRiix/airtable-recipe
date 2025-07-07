@@ -14,6 +14,7 @@ import InlineFormTemplate from "../components/form/InlineFormTemplate.vue";
 import { useRepeatLayout } from "../composables/useFormBuilder/layouts/useRepeatLayout";
 import RepeatLayoutTemplate from "../components/form/RepeatLayoutTemplate.vue";
 import UnionLayoutTemplate from "../components/form/UnionLayoutTemplate.vue";
+import PasswordLayoutTemplate from "../components/form/PasswordLayoutTemplate.vue";
 
 export const baseLayoutTemplateGridCols = createLayoutTemplate(
 	useBaseLayout,
@@ -63,4 +64,9 @@ export const inlineFormTemplate = createLayoutTemplate(
 export const repeatLayoutTemplate = createLayoutTemplate(
 	useRepeatLayout,
 	RepeatLayoutTemplate,
+);
+
+export const passwordLayoutTemplate = createLayoutTemplate(
+	useTextLayout,
+	PasswordLayoutTemplate,
 );

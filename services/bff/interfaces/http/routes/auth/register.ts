@@ -2,14 +2,21 @@ import { prismaClient } from "@interfaces/providers/prisma";
 import { TokenProvider } from "@interfaces/providers/token";
 import { envs } from "@interfaces/envs";
 import { iWantNoUserWithEmail } from "@interfaces/http/checkers/user";
+import { userRules } from "@vendors/entity-rules";
+
+const { username, password } = userRules;
 
 useBuilder()
 	.createRoute("POST", "/register")
 	.extract({
 		body: zod.object({
-			username: zod.string(),
+			username: zod.string()
+				.min(username.min)
+				.max(username.max),
 			email: zod.string().email(),
-			password: zod.string(),
+			password: zod.string()
+				.min(password.min)
+				.max(password.max),
 		}),
 	})
 	.presetCheck(
@@ -42,18 +49,18 @@ useBuilder()
 				email,
 			});
 
-			return new OkHttpResponse("user.register")
+			return new OkHttpResponse("user.register", { token })
 				.setCookie(
 					"token",
 					token,
 					{
 						httpOnly: false,
-						secure: true,
-						sameSite: "none",
+						secure: false,
+						sameSite: "lax",
 						path: "/",
-						domain: envs.FRONT_BASE_URL,
+						domain: envs.FRONT_DOMAIN,
 					},
 				);
 		},
-		makeResponseContract(OkHttpResponse, "user.register"),
+		makeResponseContract(OkHttpResponse, "user.register", zod.object({ token: zod.string() })),
 	);

@@ -5,14 +5,12 @@ export function cors(allowOrigin: string) {
 		instance.hook(
 			"beforeSend",
 			(_request, response) => {
-				response.setHeader(
-					"Access-Control-Allow-Origin",
-					allowOrigin,
-				);
-				response.setHeader(
-					"Access-Control-Expose-Headers",
-					instance.config.keyToInformationInHeaders,
-				);
+				response.setHeaders({
+					"Access-Control-Allow-Origin": allowOrigin,
+					"Access-Control-Expose-Headers": `${instance.config.keyToInformationInHeaders}`,
+					"Access-Control-Allow-Credentials": "true",
+					"Access-Control-Allow-Headers": `${instance.config.keyToInformationInHeaders},content-type,accept,authorization`,
+				});
 			},
 		);
 		instance.hook(

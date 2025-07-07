@@ -69,6 +69,8 @@ mustBeConnectedRouteBuilder()
 				),
 			);
 
+			console.log(result);
+
 			const simpleIngredientList = RecipeAi.simpleIngredientList.parse(result);
 
 			return dropper({ simpleIngredientList });
@@ -112,7 +114,7 @@ mustBeConnectedRouteBuilder()
 		async({ pickup, dropper }) => {
 			const { simpleRecipe, ingredientList, body: { recipePhoto } } = pickup(["simpleRecipe", "ingredientList", "body"]);
 
-			const result = await airtableProvider.recipeEntity
+			const [result] = await airtableProvider.recipeEntity
 				.create({
 					"Recipe Name": simpleRecipe.recipeName,
 					Description: simpleRecipe.description,
@@ -138,8 +140,7 @@ mustBeConnectedRouteBuilder()
 					),
 				);
 
-			// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-			return dropper({ recipe: result[0] });
+			return dropper({ recipe: result });
 		},
 		["recipe"],
 	)

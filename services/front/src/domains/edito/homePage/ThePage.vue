@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { recipeCreateWithAIPage } from "@/domains/recipe/recipeCreateWithAIPage/router";
 import { homePage } from "./router";
+import { recipeListPage } from "@/domains/recipe/recipeListPage/router";
 
 const { $pt } = homePage.use();
 </script>
@@ -9,7 +11,7 @@ const { $pt } = homePage.use();
 		<div class="space-y-6 text-center">
 			<div class="space-y-4">
 				<h1 class="text-3xl lg:text-5xl text-primary font-bold">
-					Services
+					{{ $pt("hero.title") }}
 				</h1>
 
 				<p class="text-xl lg:text-2xl text-muted-foreground">
@@ -26,19 +28,19 @@ const { $pt } = homePage.use();
 					<div class="mb-4 flex justify-center">
 						<div class="size-16 flex justify-center items-center bg-primary/10 text-primary rounded-full">
 							<DSIcon
-								name="account"
+								name="foodDrumstick"
 								size="large"
 							/>
 						</div>
 					</div>
 
 					<h2 class="text-lg font-semibold">
-						{{ $pt("features.human.title") }}
+						{{ $pt("features.recipes.manual.title") }}
 					</h2>
 				</template>
 
 				<DSCardDescription>
-					{{ $pt("features.human.description") }}
+					{{ $pt("features.recipes.manual.description") }}
 				</DSCardDescription>
 			</DSCard>
 
@@ -54,12 +56,12 @@ const { $pt } = homePage.use();
 					</div>
 
 					<h2 class="text-lg font-semibold">
-						{{ $pt("features.ai.title") }}
+						{{ $pt("features.recipes.ai.title") }}
 					</h2>
 				</template>
 
 				<DSCardDescription>
-					{{ $pt("features.ai.description") }}
+					{{ $pt("features.recipes.ai.description") }}
 				</DSCardDescription>
 			</DSCard>
 
@@ -99,7 +101,7 @@ const { $pt } = homePage.use();
 			</div>
 
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-				<RouterLink :to="{ path: '#' }">
+				<RouterLink :to="recipeListPage">
 					<DSCard class="hover:shadow-md transition-shadow cursor-pointer group">
 						<div class="flex items-center gap-4">
 							<div class="shrink-0 size-12 flex justify-center items-center bg-primary/10 text-primary rounded-lg group-hover:bg-primary/20 transition-colors">
@@ -119,7 +121,7 @@ const { $pt } = homePage.use();
 					</DSCard>
 				</RouterLink>
 
-				<RouterLink :to="{ path: '#' }">
+				<RouterLink :to="recipeCreateWithAIPage">
 					<DSCard class="hover:shadow-md transition-shadow cursor-pointer group">
 						<div class="flex items-center gap-4">
 							<div class="shrink-0 size-12 flex justify-center items-center bg-primary/10 text-primary rounded-lg group-hover:bg-primary/20 transition-colors">

@@ -1,11 +1,10 @@
 import { Recipe } from "@business/entities/recipe";
 import { recipeConfigs } from "@interfaces/configs/recipe";
-import { mustBeConnectedRouteBuilder } from "@interfaces/http/security/mustBeConected";
 import { airtableProvider } from "@interfaces/providers/airtable";
 
 const { quantityPerPage } = recipeConfigs.findMany;
 
-mustBeConnectedRouteBuilder()
+useBuilder()
 	.createRoute("POST", "/recipe-list-page")
 	.handler(
 		async() => {

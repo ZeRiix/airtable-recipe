@@ -1,8 +1,7 @@
 import { Recipe } from "@business/entities/recipe";
 import { iWantRecipeExistById } from "@interfaces/http/checkers/recipe";
-import { mustBeConnectedRouteBuilder } from "@interfaces/http/security/mustBeConected";
 
-mustBeConnectedRouteBuilder()
+useBuilder()
 	.createRoute("POST", "/recipe-find-one")
 	.extract({
 		body: {
