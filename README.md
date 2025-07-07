@@ -22,7 +22,7 @@ Ce projet est un monorepo Node.js démontrant comment créer une application de 
 
 ```bash
 # Clone le repository
-git clone <votre-repository>
+git clone https://github.com/ZeRiix/airtable-recipe
 cd airtable
 
 # Installation d'Ollama (voir section dédiée)
